@@ -31,4 +31,6 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    systemProperty 'platform', System.getProperty('platform', "7.1.1")
+    systemProperty 'device', System.getProperty('device', "ZC554KL")
 }

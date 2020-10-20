@@ -45,3 +45,4 @@ out/
 !**/src/test/**
 
 .allure/
+screenshot/
