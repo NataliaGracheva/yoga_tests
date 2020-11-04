@@ -2,6 +2,7 @@ package pages;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
+import utils.Common;
 
 public class UserPreferences {
     private AppiumDriver driver;
@@ -10,8 +11,8 @@ public class UserPreferences {
     private By skipBtn = By.xpath("//*[contains(@text, 'Пропустить')]");
     private By selectBtn = By.xpath("//*[contains(@text, 'ВЫБРАТЬ')]");
 
-    private String options_xpath = "//TextView[@text='{substring}']";
-    private String headers_xpath = "//TextView[contains(@text, '{substring}')]";
+    private String options_xpath = "//android.widget.TextView[@text='{substring}']";
+    private String headers_xpath = "//android.widget.TextView[contains(@text, '{substring}')]";
 
     String experienceHeader = "Какой у Вас опыт в йоге?";
     String instructionsHeader = "Какой объем инструкций вы хотите получить?";
@@ -52,8 +53,8 @@ public class UserPreferences {
     }
 
     public void skipOption() {
-        Common.waitForElementPresent(driver, skipBtn, "Нет кнопки Пропустить", 5);
-        Common.waitForElement(driver, skipBtn, "Нет кнопки Пропустить", 3).click();
+//        Common.waitForElementPresent(driver, skipBtn, "Нет кнопки Пропустить", 5);
+        Common.waitForElement(driver, skipBtn, "Нет кнопки Пропустить", 5).click();
     }
 
     public AuthPage skipAllOptionsWithTakingScreenshots(int num) {
@@ -66,9 +67,9 @@ public class UserPreferences {
     }
 
     public void goBack(String currentText, String expectedText) {
-        Common.waitForElementPresent(driver, By.xpath("//*[contains(@text, '" + currentText + "')]"), "Нет текущего заголовка", 10);
+        Common.waitForElementPresent(driver, By.xpath("//*[contains(@text, '" + currentText + "')]"), "Нет текущего заголовка: " + currentText, 10);
         Common.waitForElement(driver, backBtn, "Нет кнопки Назад", 3).click();
-        Common.waitForElementPresent(driver, By.xpath("//*[contains(@text, '" + expectedText + "')]"), "Нет следующего заголовка", 10);
+        Common.waitForElementPresent(driver, By.xpath("//*[contains(@text, '" + expectedText + "')]"), "Нет ожидаемого заголовка: " + expectedText, 10);
     }
 
 }

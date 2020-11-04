@@ -2,6 +2,7 @@ package pages;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
+import utils.Common;
 
 public class StartPage {
     private AppiumDriver driver;
